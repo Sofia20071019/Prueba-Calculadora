@@ -1,43 +1,38 @@
 # Calculadora de salud
 
 def calcularIMC(peso, altura):
-    """Calcula el Índice de Masa Corporal (IMC) dado el peso en kg y la altura en metros."""
+    """Calcula el IMC"""
+    return peso / (altura * altura)
 
-peso = float(input("Ingrese su peso: "))
-altura = float(input("Ingrese su altura: "))
+def clasificarIMC(imc):
 
-imc = peso / (altura * altura)
+    if imc < 16:
+        return "Delgadez severa"
+    elif imc < 17:
+        return "Delgadez moderada"
+    elif imc < 18.5:
+        return "Delgadez aceptable"
+    elif imc < 25:
+        return "Peso normal"
+    elif imc < 30:
+        return "Sobrepeso"
+    elif imc < 35:
+        return "Obesidad tipo I"
+    elif imc < 40:
+        return "Obesidad tipo II"
+    elif imc < 50:
+        return "Obesidad tipo III (morbida)"
+    else:
+        return "Obesidad tipo IV (extrema)"
 
-print("Su IMC es:", imc)
-
-if imc < 16:
-    print("Estas en delgadez severa")
-elif imc < 17:
-    print("Estas en delgadez moderada")
-elif imc < 18.5:
-    print("Estas en delgadez aceptable")
-elif imc < 25:
-    print("Estas en peso normal")
-elif imc < 30:
-    print("Estas en sobrepeso")
-elif imc < 35:
-    print("Estas en obesidad tipo I")
-elif imc < 40:
-    print("Estas en obesidad tipo II")
-elif imc < 50:
-    print("Estas en obesidad tipo III (morbida)")
-else:
-    print("Estas en obesidad tipo IV (extrema)")
-
-def calcaularIMC(peso, altura):
-    """Calcula el Índice de Masa Corporal (IMC) dado el peso en kg y la altura en metros."""
-
-def calcular_calorias_a_delgazar(peso_actual, peso_objetivo, dias):
-    """Calcula las calorías diarias segun el nivel de actividad y resta las calorias para adelgazar."""
-
+# Programa principal
 if __name__ == "__main__":
 
+    peso = float(input("Ingrese su peso (kg): "))
+    altura = float(input("Ingrese su altura (m): "))
+
+    imc = calcularIMC(peso, altura)
+
     print("\nResultados:")
-    print("IMC:", imc)
-    print("Masa corporal:", masa)
-    print("Calorias para adelgazar: ", calorias)
+    print("IMC:", round(imc, 2))
+    print("Clasificación:", clasificarIMC(imc))
